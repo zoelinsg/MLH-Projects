@@ -10,7 +10,7 @@ class EchoIn(BaseModel):
 @app.get("/")
 def root():
     return {"message": "API is running. Visit /docs for Swagger UI."}
-    
+
 @app.get("/health")
 def health():
     return {"status": "ok", "ts": int(time.time())}
