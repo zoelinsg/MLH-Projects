@@ -25,5 +25,8 @@ poetry run python agent.py
 ```
 
 ## Features Used
-* Memory (memory="Auto")
-* Web Search (web_search="Auto")
+
+- Memory (`memory="Auto"`)
+- Web Search (`web_search="Auto"`)
+- List memories
+- Search memories

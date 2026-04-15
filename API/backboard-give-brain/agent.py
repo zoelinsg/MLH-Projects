@@ -1,9 +1,43 @@
 import asyncio
 import os
+import requests
 from backboard import BackboardClient
 import dotenv
 
 dotenv.load_dotenv()
+
+BASE_URL = "https://app.backboard.io/api"
+
+
+def api_headers(api_key: str):
+    return {
+        "X-API-Key": api_key,
+        "Content-Type": "application/json",
+    }
+
+
+def list_memories(api_key: str, assistant_id: str):
+    response = requests.get(
+        f"{BASE_URL}/assistants/{assistant_id}/memories",
+        headers=api_headers(api_key),
+        timeout=30,
+    )
+    response.raise_for_status()
+    return response.json()
+
+
+def search_memories(api_key: str, assistant_id: str, query: str, limit: int = 5):
+    response = requests.post(
+        f"{BASE_URL}/assistants/{assistant_id}/memories/search",
+        headers=api_headers(api_key),
+        json={
+            "query": query,
+            "limit": limit,
+        },
+        timeout=30,
+    )
+    response.raise_for_status()
+    return response.json()
 
 
 async def main():
@@ -56,6 +90,30 @@ async def main():
     )
     print("\nWeb search response:")
     print(web_response.content)
+
+    print("\nStep 6: Listing all memories...")
+    memories_data = list_memories(api_key, assistant.assistant_id)
+    memories = memories_data.get("memories", [])
+
+    if not memories:
+        print("No memories found.")
+    else:
+        for memory in memories:
+            print(f"- {memory.get('content', '(no content)')}")
+
+    print("\nStep 7: Searching memories...")
+    search_data = search_memories(
+        api_key,
+        assistant.assistant_id,
+        query="programming language preferences",
+        limit=5,
+    )
+    print(f"Found {search_data.get('total_count', 0)} matching memories")
+
+    for memory in search_data.get("memories", []):
+        score = memory.get("score", 0)
+        content = memory.get("content", "(no content)")
+        print(f"[{score:.2f}] {content}")
 
 
 if __name__ == "__main__":
