@@ -16,7 +16,7 @@ async def main():
     print("Step 1: Creating assistant...")
     assistant = await client.create_assistant(
         name="Brain Assistant",
-        system_prompt="You are a helpful assistant that uses memory and web search when enabled."
+        system_prompt="You are a helpful assistant. Keep answers concise, direct, and under 60 words unless asked otherwise."
     )
     print(f"Created assistant: {assistant.assistant_id}")
 
@@ -40,7 +40,7 @@ async def main():
 
     recall_response = await client.add_message(
         thread_id=thread2.thread_id,
-        content="What is my favorite programming language and what role do I want to become?",
+        content="What is my favorite programming language and target role? Answer in one sentence.",
         memory="Auto",
         stream=False
     )
@@ -50,7 +50,7 @@ async def main():
     print("\nStep 5: Testing web search...")
     web_response = await client.add_message(
         thread_id=thread2.thread_id,
-        content="What are some major AI developer trends right now? Use web search if needed.",
+        content="What are 2 current AI developer trends in 2026? Keep the answer under 60 words and use web search.",
         web_search="Auto",
         stream=False
     )
