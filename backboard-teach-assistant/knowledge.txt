@@ -1,0 +1,5 @@
+My name is Zoe.
+I am learning Python and Java.
+My target role is full-stack engineer.
+I prefer working with React and Java backend.
+I want to join a global tech company in the future.
