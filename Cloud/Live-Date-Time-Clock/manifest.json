@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Live Date Time Clock",
+  "version": "1.0",
+  "description": "Shows live time on the Chrome toolbar and full date/time in popup.",
+  "permissions": ["alarms"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Live Clock",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}
