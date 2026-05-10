@@ -20,10 +20,10 @@ A simple React application that demonstrates how to set up an authentication flo
 
 1. Open the `frontend` directory.
 2. Install dependencies:
+```bash
+npm install
 
-   ```bash
-   npm install
-   ```
+```
 3. Create a .env file in the frontend directory:
 ```bash
 VITE_AUTH0_DOMAIN=your_auth0_domain
