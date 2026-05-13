@@ -6,11 +6,10 @@
   font-size: 16px;
   line-height: 1.5;
   --bg: #050818;
-  --panel: rgba(12, 15, 40, 0.76);
-  --panel-border: rgba(126, 94, 255, 0.38);
+  --panel: rgba(12, 15, 40, 0.78);
+  --panel-border: rgba(126, 94, 255, 0.32);
   --accent: #7c3aed;
   --accent-strong: #39d6ff;
-  --accent-soft: rgba(56, 189, 248, 0.18);
   --text-muted: #a8b2ff;
   --shadow: 0 20px 50px rgba(20, 27, 94, 0.35);
 }
@@ -33,236 +32,248 @@ button {
 
 .app-shell {
   min-height: 100vh;
-  padding: 32px;
+  padding: 28px;
   display: grid;
   place-items: center;
 }
 
-.neon-grid {
+.battle-container {
+  width: min(1100px, calc(100% - 40px));
   display: grid;
   gap: 24px;
-  width: min(1080px, calc(100% - 32px));
-  grid-template-columns: 1.2fr 0.8fr;
-  grid-template-areas:
-    'hero result'
-    'hero actions';
+  color: #e2e8f0;
 }
 
-.hero-panel,
-.result-panel,
-.action-panel {
+.battle-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.battle-heading h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+}
+
+.subtext {
+  margin: 0 0 10px;
+  color: var(--accent-strong);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+}
+
+.battle-tag {
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: rgba(57, 214, 255, 0.12);
+  color: #8b5cf6;
+  border: 1px solid rgba(57, 214, 255, 0.2);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.arena-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 0.8fr;
+  gap: 24px;
+}
+
+.arena-panel,
+.side-panel {
   background: var(--panel);
-  border: 1px solid rgba(109, 98, 255, 0.24);
+  border: 1px solid var(--panel-border);
   border-radius: 24px;
   box-shadow: var(--shadow);
-  backdrop-filter: blur(16px);
-  padding: 32px;
+  backdrop-filter: blur(18px);
+  padding: 26px;
 }
 
-.hero-panel {
-  grid-area: hero;
+.panel-header,
+.powerup-pool,
+.status-grid,
+.hud-list,
+.controls-row {
   display: grid;
-  gap: 20px;
-  align-content: center;
+  gap: 16px;
 }
 
-.hero-tag {
-  display: inline-flex;
+.panel-header {
   align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(56, 189, 248, 0.08);
-  color: var(--accent-strong);
-  letter-spacing: 0.18em;
-  font-size: 0.83rem;
-  text-transform: uppercase;
+  grid-template-columns: 1fr auto;
 }
 
-.hero-headline {
-  margin: 0;
-  font-size: clamp(2rem, 4vw, 3.6rem);
-  letter-spacing: 0.08em;
-  color: #ebebff;
-  text-shadow: 0 0 18px rgba(124, 58, 237, 0.55);
+.powerup-pool {
+  border: 1px dashed rgba(148, 163, 184, 0.3);
+  border-radius: 20px;
+  padding: 18px;
+  min-height: 240px;
+  background: rgba(15, 23, 42, 0.72);
 }
 
-.hero-subtitle {
-  margin: 0;
-  max-width: 640px;
+.powerup-empty {
   color: var(--text-muted);
-  font-size: 1rem;
-}
-
-.result-panel {
-  grid-area: result;
-  display: grid;
-  gap: 24px;
-}
-
-.result-card {
+  font-size: 0.98rem;
   padding: 28px;
-  border-radius: 24px;
-  background: rgba(11, 13, 37, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+}
+
+.powerup-drop {
   display: grid;
-  gap: 16px;
-  align-items: start;
-}
-
-.result-card--defeat {
-  box-shadow: 0 0 0 1px rgba(255, 94, 156, 0.18), inset 0 0 18px rgba(255, 45, 137, 0.2);
-}
-
-.result-label {
-  font-size: 0.78rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: #94a3b8;
-}
-
-.result-card h2 {
-  margin: 0;
-  font-size: 3rem;
-  color: #ff64a5;
-  letter-spacing: 0.14em;
-  text-shadow: 0 0 20px rgba(255, 100, 165, 0.45);
-}
-
-.result-detail {
-  margin: 0;
-  color: var(--text-muted);
-}
-
-.score-summary {
-  display: grid;
-  gap: 18px;
-}
-
-.summary-title {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent-strong);
-}
-
-.summary-grid {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.stat-card {
-  padding: 20px;
+  gap: 10px;
+  padding: 16px;
+  border: 1px solid;
   border-radius: 18px;
-  background: linear-gradient(180deg, rgba(12, 17, 52, 0.92), rgba(18, 22, 60, 0.85));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: inset 0 0 0 1px rgba(56, 189, 248, 0.08);
+  background: rgba(15, 23, 42, 0.82);
 }
 
-.stat-label {
-  font-size: 0.86rem;
-  color: #9ca3ff;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin-bottom: 10px;
-}
-
-.stat-value {
-  font-size: 1.45rem;
-  font-weight: 700;
-  color: #f8fafc;
-}
-
-.action-panel {
-  grid-area: actions;
-}
-
-.action-card {
-  display: grid;
-  gap: 20px;
-}
-
-.status-chip {
+.powerup-badge {
   display: inline-flex;
-  padding: 10px 14px;
+  padding: 8px 12px;
   border-radius: 999px;
-  background: rgba(79, 70, 229, 0.14);
-  border: 1px solid rgba(124, 58, 237, 0.18);
-  color: #c7d2fe;
-  letter-spacing: 0.16em;
-  font-size: 0.8rem;
-  text-transform: uppercase;
+  color: #080a1f;
+  font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
-.action-copy {
+.powerup-description {
   margin: 0;
   color: var(--text-muted);
-  line-height: 1.8;
 }
 
-.button-row {
+.powerup-button {
+  width: fit-content;
+  border: none;
+  border-radius: 14px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #38bdf8 0%, #8b5cf6 100%);
+  color: #070b17;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.hud-panel,
+.status-panel,
+.controls-panel {
+  background: rgba(15, 23, 42, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 18px;
+}
+
+.hud-panel h2,
+.status-panel h2,
+.controls-panel h2 {
+  margin: 0 0 12px;
+  letter-spacing: 0.08em;
+}
+
+.hud-list {
+  min-height: 120px;
+}
+
+.hud-empty {
+  color: var(--text-muted);
+}
+
+.hud-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.hud-status {
   display: grid;
-  gap: 16px;
-  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+  color: var(--text-muted);
+}
+
+.status-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.status-card {
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+}
+
+.status-card span {
+  display: block;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.status-card strong {
+  font-size: 1.4rem;
+}
+
+.controls-row {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .btn {
   border: none;
   border-radius: 16px;
-  padding: 16px 20px;
+  padding: 14px 18px;
   font-weight: 700;
   letter-spacing: 0.08em;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn:hover {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #6ee7b7 0%, #38bdf8 100%);
-  color: #07141d;
-  box-shadow: 0 14px 28px rgba(56, 189, 248, 0.24);
+  background: linear-gradient(135deg, #34d399 0%, #38bdf8 100%);
+  color: #030712;
 }
 
 .btn-secondary {
-  background: rgba(124, 58, 237, 0.16);
-  color: #dbeafe;
-  border: 1px solid rgba(124, 58, 237, 0.45);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  background: rgba(59, 130, 246, 0.14);
+  color: #c7d2fe;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.btn-tertiary {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e2e8f0;
+  border: 1px solid rgba(148, 163, 184, 0.16);
 }
 
 @media (max-width: 900px) {
-  .neon-grid {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      'hero'
-      'result'
-      'actions';
-  }
-
-  .summary-grid {
+  .arena-grid {
     grid-template-columns: 1fr;
   }
 
-  .button-row {
+  .controls-row,
+  .status-grid {
     grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 640px) {
   .app-shell {
-    padding: 20px;
+    padding: 18px;
   }
 
-  .hero-panel,
-  .result-panel,
-  .action-panel {
-    padding: 24px;
-    border-radius: 20px;
+  .battle-container {
+    gap: 18px;
+  }
+
+  .panel-header,
+  .controls-row,
+  .status-grid {
+    gap: 12px;
   }
 }
