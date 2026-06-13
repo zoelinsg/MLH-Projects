@@ -35,11 +35,20 @@ document.getElementById('startBtn').addEventListener('click', function() {
     document.getElementById('roundNumber').textContent = '1';
     document.getElementById('timeRemaining').textContent = '03:00';
     
+    /* Show the arena and active power-ups panels */
+    document.getElementById('arenaSection').style.display = 'block';
+    document.getElementById('activePowerupsPanel').style.display = 'block';
+    
+    /* Initialize and start the power-up system */
+    resetPlayerStats();
+    initializePowerupSystem();
+    startGameLoop();
+    
     /* Open the Start Match modal to show game has started */
     openModal('startModal');
     
     /* Optional: Log to console for debugging */
-    console.log('Match started! Battle status updated.');
+    console.log('Match started! Power-up system initialized.');
 });
 
 /* ========== GAME OVER SCREEN FUNCTION ========== */
@@ -79,13 +88,18 @@ document.getElementById('playAgainBtn').addEventListener('click', function() {
     /* Hide the Game Over screen */
     hideGameOverScreen();
     
-    /* Reset battle status for new match */
+    /* Stop the game loop and clean up power-up system */
+    stopGameLoop();
+    cleanupPowerupSystem();
+    
+    /* Reset player stats and battle status for new match */
+    resetPlayerStats();
     document.getElementById('matchStatus').textContent = 'WAITING';
     document.getElementById('roundNumber').textContent = '0';
     document.getElementById('timeRemaining').textContent = '--:--';
     
     /* Optional: Log to console for debugging */
-    console.log('Play Again clicked! Resetting for new match...');
+    console.log('Play Again clicked! Power-up system cleaned up. Ready for new match...');
 });
 
 /* ========== BACK TO ARENA BUTTON ========== */
@@ -94,13 +108,21 @@ document.getElementById('backArenaBtn').addEventListener('click', function() {
     /* Hide the Game Over screen */
     hideGameOverScreen();
     
+    /* Stop the game loop and clean up power-up system */
+    stopGameLoop();
+    cleanupPowerupSystem();
+    
+    /* Hide the arena and active power-ups panels */
+    document.getElementById('arenaSection').style.display = 'none';
+    document.getElementById('activePowerupsPanel').style.display = 'none';
+    
     /* Reset all battle stats to initial state */
     document.getElementById('matchStatus').textContent = 'WAITING';
     document.getElementById('roundNumber').textContent = '0';
     document.getElementById('timeRemaining').textContent = '--:--';
     
     /* Optional: Log to console for debugging */
-    console.log('Back to Arena clicked! Returning to main screen...');
+    console.log('Back to Arena clicked! Power-up system cleaned up.');
 });
 
 /* ========== MATCH HISTORY BUTTON ========== */
@@ -129,3 +151,51 @@ window.addEventListener('keydown', function(event) {
         console.log('Modals and Game Over screen closed with Escape key');
     }
 });
+
+/* ========== DEBUG HELPERS ========== */
+/* These functions are available in the browser console for testing */
+/* Use them to debug the power-up system during development */
+
+/**
+ * Log all system states at once
+ * Usage in console: debugFullState()
+ */
+function debugFullState() {
+    console.log('\n========== FULL SYSTEM STATE ==========');
+    logPlayerState();
+    logArenaState();
+    logGameLoopStats();
+    console.log('======================================\n');
+}
+
+/**
+ * Manually test spawning a power-up
+ * Usage in console: debugSpawnPowerup('speedBoost')
+ */
+function debugSpawnPowerup(type) {
+    console.log(`[DEBUG] Manually spawning ${type}...`);
+    spawnRandomPowerup();
+}
+
+/**
+ * Manually test collecting the first power-up in arena
+ * Usage in console: debugCollectFirstPowerup()
+ */
+function debugCollectFirstPowerup() {
+    if (arenaPowerups.length > 0) {
+        const pu = arenaPowerups[0];
+        console.log(`[DEBUG] Collecting first power-up: ${pu.type}`);
+        // collectPowerup(pu);  // TODO: Uncomment when implemented
+    } else {
+        console.log('[DEBUG] No power-ups in arena to collect');
+    }
+}
+
+console.log('=== MONA MAYHEM ARENA LAB - POWER-UP SYSTEM LOADED ===');
+console.log('Debug commands available:');
+console.log('  debugFullState() - Show all system states');
+console.log('  debugSpawnPowerup(type) - Spawn a power-up');
+console.log('  debugCollectFirstPowerup() - Collect first power-up');
+console.log('  logPlayerState() - Show player stats');
+console.log('  logArenaState() - Show arena power-ups');
+console.log('========================================================');

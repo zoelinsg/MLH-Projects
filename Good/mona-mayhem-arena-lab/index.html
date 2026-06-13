@@ -82,6 +82,26 @@
             <button class="btn btn-gameover" id="gameoverBtn">💥 Game Over Screen</button>
             <button class="btn btn-history" id="historyBtn">📜 Match History</button>
         </div>
+
+        <!-- ========== BATTLE ARENA SECTION ========== -->
+        <!-- This section shows the arena where power-ups spawn (will be visible during battle) -->
+        <div class="arena-section" id="arenaSection" style="display: none;">
+            <h2>[ BATTLE ARENA ]</h2>
+            <div class="arena-container">
+                <!-- Power-ups spawn here -->
+                <div class="powerups-container" id="arenaPowerups"></div>
+            </div>
+        </div>
+
+        <!-- ========== ACTIVE POWER-UPS PANEL ========== -->
+        <!-- This panel displays power-ups currently affecting the player -->
+        <div class="active-powerups-panel" id="activePowerupsPanel" style="display: none;">
+            <h2>[ ACTIVE EFFECTS ]</h2>
+            <div class="active-powerups-list" id="activePowerupsList">
+                <!-- Active power-ups will be displayed here -->
+                <p class="no-active-powerups">No active effects</p>
+            </div>
+        </div>
     </div>
 
     <!-- ========== MODALS ========== -->
@@ -179,6 +199,12 @@
     </div>
 
     <!-- ========== JAVASCRIPT ========== -->
+    <!-- Power-Up System Scripts -->
+    <script src="player-state.js"></script>
+    <script src="powerup-system.js"></script>
+    <script src="game-loop.js"></script>
+    
+    <!-- Main Script -->
     <script src="script.js"></script>
 </body>
 </html>
