@@ -129,10 +129,94 @@ document.getElementById('backArenaBtn').addEventListener('click', function() {
 /* Get the Match History button and add a click event listener */
 document.getElementById('historyBtn').addEventListener('click', function() {
     /* Open the Match History modal to show past matches */
+    renderMatchHistory();
     openModal('historyModal');
     
     /* Optional: Log to console for debugging */
     console.log('Match History displayed!');
+});
+
+/* Default match history records shown when there is no saved history */
+const defaultMatchHistory = [
+    { date: '2026-06-13 21:00', opponent: 'Neon Phantom', result: 'Victory', duration: '04:12', score: '14,200' },
+    { date: '2026-06-13 19:45', opponent: 'Cyber Samurai', result: 'Defeat', duration: '03:55', score: '9,800' },
+    { date: '2026-06-13 18:20', opponent: 'Vapor Wraith', result: 'Victory', duration: '05:05', score: '12,450' }
+];
+
+/* Load match history from localStorage or use defaults */
+function loadMatchHistory() {
+    const saved = localStorage.getItem('monaMatchHistory');
+    if (saved) {
+        try {
+            const parsed = JSON.parse(saved);
+            if (Array.isArray(parsed)) {
+                return parsed;
+            }
+        } catch (error) {
+            console.warn('Match history could not be parsed:', error);
+        }
+    }
+    return defaultMatchHistory.slice();
+}
+
+/* Save match history to localStorage */
+function saveMatchHistory(history) {
+    localStorage.setItem('monaMatchHistory', JSON.stringify(history));
+}
+
+/* Render the history list and empty state */
+function renderMatchHistory() {
+    const historyList = document.getElementById('historyList');
+    const historyEmpty = document.getElementById('historyEmpty');
+    const history = loadMatchHistory();
+
+    historyList.innerHTML = '';
+    if (history.length === 0) {
+        historyEmpty.style.display = 'block';
+        historyList.style.display = 'none';
+        return;
+    }
+
+    historyEmpty.style.display = 'none';
+    historyList.style.display = 'block';
+
+    history.forEach((record, index) => {
+        const item = document.createElement('li');
+        const statusClass = record.result.toLowerCase().includes('victory') ? 'win' : 'loss';
+        item.className = `history-item ${statusClass}`;
+        item.innerHTML = `
+            <div class="history-title">
+                <strong>Match ${index + 1}</strong> — ${record.result} vs ${record.opponent}
+            </div>
+            <div class="history-meta">
+                <span>Date: ${record.date}</span>
+                <span>Duration: ${record.duration}</span>
+                <span>Score: ${record.score}</span>
+            </div>
+        `;
+        historyList.appendChild(item);
+    });
+}
+
+/* Clear all saved match history with confirmation */
+function clearMatchHistory() {
+    const history = loadMatchHistory();
+    if (history.length === 0) {
+        return;
+    }
+
+    const confirmed = window.confirm('Clear all match history? This cannot be undone.');
+    if (!confirmed) {
+        return;
+    }
+
+    localStorage.removeItem('monaMatchHistory');
+    renderMatchHistory();
+}
+
+document.getElementById('clearHistoryBtn').addEventListener('click', function() {
+    clearMatchHistory();
+    console.log('Match history cleared.');
 });
 
 /* ========== KEYBOARD ACCESSIBILITY ========== */

@@ -344,20 +344,86 @@ body {
 /* Styled list for match history items */
 .history-list {
     list-style: none;
+    margin-bottom: 20px;
 }
 
-.history-list li {
-    background: rgba(0, 245, 255, 0.1);
-    border-left: 3px solid #00F5FF;
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 5px;
+.history-list li,
+.history-item {
+    background: rgba(0, 245, 255, 0.08);
+    border-left: 4px solid #00F5FF;
+    padding: 16px 16px 14px;
+    margin-bottom: 14px;
+    border-radius: 10px;
     color: #00F5FF;
+    box-shadow: 0 0 12px rgba(0, 245, 255, 0.1);
+}
+
+.history-item.win {
+    background: rgba(0, 255, 170, 0.08);
+    border-left-color: #00FF99;
+}
+
+.history-item.loss {
+    background: rgba(255, 0, 159, 0.08);
+    border-left-color: #FF33C4;
 }
 
 .history-list li:hover {
-    background: rgba(139, 92, 246, 0.2);
-    border-left-color: #FF00FF;
+    transform: translateX(2px);
+}
+
+.history-title {
+    font-size: 1.05em;
+    margin-bottom: 8px;
+    color: #FFFFFF;
+}
+
+.history-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: #C8F9FF;
+    font-size: 0.95em;
+    line-height: 1.4;
+}
+
+.history-meta span {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.empty-state {
+    color: #8B5CF6;
+    font-style: italic;
+    text-align: center;
+    padding: 15px;
+    background: rgba(255, 0, 255, 0.08);
+    border: 1px dashed rgba(255, 0, 255, 0.4);
+    border-radius: 10px;
+}
+
+.modal-clear-btn {
+    background: linear-gradient(135deg, #FF00FF, #8B5CF6);
+    color: #0a0a0a;
+    border: 2px solid #FF00FF;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px #FF00FF;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+.modal-clear-btn:hover {
+    box-shadow: 0 0 25px #FF00FF, 0 0 15px #8B5CF6;
+    transform: scale(1.03);
 }
 
 /* ========== GAME OVER SCREEN ========== */

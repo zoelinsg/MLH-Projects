@@ -187,13 +187,11 @@
     <div class="modal" id="historyModal">
         <div class="modal-content">
             <h2>📜 MATCH HISTORY 📜</h2>
-            <ul class="history-list">
-                <li><strong>Match 1:</strong> Victory - 12,500 XP | Date: Today 3:45 PM</li>
-                <li><strong>Match 2:</strong> Victory - 11,200 XP | Date: Today 2:30 PM</li>
-                <li><strong>Match 3:</strong> Victory - 13,450 XP | Date: Today 1:15 PM</li>
-                <li><strong>Match 4:</strong> Defeat - 5,600 XP | Date: Yesterday 10:20 PM</li>
-                <li><strong>Match 5:</strong> Victory - 10,800 XP | Date: Yesterday 8:45 PM</li>
-            </ul>
+            <div id="historyContent">
+                <ul class="history-list" id="historyList"></ul>
+                <p class="empty-state" id="historyEmpty">No match history yet. Play a match to log your next arcade battle.</p>
+            </div>
+            <button class="modal-clear-btn" id="clearHistoryBtn">CLEAR HISTORY</button>
             <button class="modal-close-btn" onclick="closeModal('historyModal')">CLOSE</button>
         </div>
     </div>
