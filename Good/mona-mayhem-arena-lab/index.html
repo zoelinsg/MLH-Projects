@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mona Mayhem Arena Lab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ========== MAIN CONTAINER ========== -->
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero">
+            <h1>⚡ MONA MAYHEM ARENA LAB ⚡</h1>
+            <p>BATTLE READY. VICTORY AWAITS.</p>
+        </div>
+
+        <!-- Game Description Panel -->
+        <div class="description-panel">
+            <h2>[ ARENA BRIEFING ]</h2>
+            <p>
+                Welcome to Mona Mayhem Arena Lab, the ultimate retro-neon arcade battle simulator. 
+                Step into the digital arena, test your skills, and climb the leaderboards in this 
+                fast-paced combat experience. Are you ready to become a legend?
+            </p>
+        </div>
+
+        <!-- Battle Status and Player Stats Panels -->
+        <div class="panels-grid">
+            <!-- Battle Status Panel -->
+            <div class="battle-status-panel">
+                <h2>[ BATTLE STATUS ]</h2>
+                <div class="status-item">
+                    <label>Match Status:</label>
+                    <value id="matchStatus">WAITING</value>
+                </div>
+                <div class="status-item">
+                    <label>Round:</label>
+                    <value id="roundNumber">0</value>
+                </div>
+                <div class="status-item">
+                    <label>Opponent Health:</label>
+                </div>
+                <div class="health-bar">
+                    <div class="health-bar-fill"></div>
+                </div>
+                <div class="status-item">
+                    <label>Time Remaining:</label>
+                    <value id="timeRemaining">--:--</value>
+                </div>
+            </div>
+
+            <!-- Player Stats Panel -->
+            <div class="player-stats-panel">
+                <h2>[ PLAYER STATS ]</h2>
+                <div class="stat-item">
+                    <label>Player Name:</label>
+                    <value id="playerName">MONA</value>
+                </div>
+                <div class="stat-item">
+                    <label>Level:</label>
+                    <value id="playerLevel">5</value>
+                </div>
+                <div class="stat-item">
+                    <label>Experience:</label>
+                    <value id="playerExp">2,450 XP</value>
+                </div>
+                <div class="stat-item">
+                    <label>Wins:</label>
+                    <value id="playerWins">12</value>
+                </div>
+                <div class="stat-item">
+                    <label>Current Streak:</label>
+                    <value id="playerStreak">3</value>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="buttons-grid">
+            <button class="btn btn-start" id="startBtn">🎮 Start Match</button>
+            <button class="btn btn-gameover" id="gameoverBtn">💥 Game Over Screen</button>
+            <button class="btn btn-history" id="historyBtn">📜 Match History</button>
+        </div>
+    </div>
+
+    <!-- ========== MODALS ========== -->
+    <!-- Start Match Modal -->
+    <div class="modal" id="startModal">
+        <div class="modal-content">
+            <h2>⚡ MATCH STARTED ⚡</h2>
+            <p>Your battle has begun! Take control of the arena and dominate your opponent.</p>
+            <p><strong>Round 1 of 3</strong></p>
+            <p>Show them what you've got! Victory awaits those with true gaming spirit.</p>
+            <button class="modal-close-btn" onclick="closeModal('startModal')">CLOSE</button>
+        </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div class="game-over-screen" id="gameoverScreen">
+        <div class="game-over-container">
+            <!-- Game Over Title -->
+            <div class="game-over-header">
+                <h1 class="game-over-title">💥 GAME OVER 💥</h1>
+                <div class="game-over-divider"></div>
+            </div>
+
+            <!-- Game Over Content -->
+            <div class="game-over-content">
+                <!-- Result Banner -->
+                <div class="result-banner">
+                    <p class="result-text">YOU WIN!</p>
+                    <p class="result-subtitle">VICTORY IS YOURS!</p>
+                </div>
+
+                <!-- Score Display -->
+                <div class="score-display">
+                    <div class="score-label">FINAL SCORE</div>
+                    <div class="score-value">15,750</div>
+                    <div class="score-unit">POINTS</div>
+                </div>
+
+                <!-- Match Stats -->
+                <div class="match-stats">
+                    <div class="stat-box">
+                        <span class="stat-label">Rounds Won:</span>
+                        <span class="stat-value">2</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Performance:</span>
+                        <span class="stat-value">AMAZING!</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Experience Gained:</span>
+                        <span class="stat-value">+500 XP</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Rewards:</span>
+                        <span class="stat-value">+50 Gold</span>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div class="achievements-section">
+                    <p class="achievements-title">🏆 ACHIEVEMENTS UNLOCKED 🏆</p>
+                    <div class="achievement-badges">
+                        <div class="badge">First Victory</div>
+                        <div class="badge">Undefeated</div>
+                        <div class="badge">Arena Master</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="game-over-buttons">
+                <button class="game-over-btn btn-play-again" id="playAgainBtn">
+                    🎮 PLAY AGAIN
+                </button>
+                <button class="game-over-btn btn-back-arena" id="backArenaBtn">
+                    ⬅️ BACK TO ARENA
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Match History Modal -->
+    <div class="modal" id="historyModal">
+        <div class="modal-content">
+            <h2>📜 MATCH HISTORY 📜</h2>
+            <ul class="history-list">
+                <li><strong>Match 1:</strong> Victory - 12,500 XP | Date: Today 3:45 PM</li>
+                <li><strong>Match 2:</strong> Victory - 11,200 XP | Date: Today 2:30 PM</li>
+                <li><strong>Match 3:</strong> Victory - 13,450 XP | Date: Today 1:15 PM</li>
+                <li><strong>Match 4:</strong> Defeat - 5,600 XP | Date: Yesterday 10:20 PM</li>
+                <li><strong>Match 5:</strong> Victory - 10,800 XP | Date: Yesterday 8:45 PM</li>
+            </ul>
+            <button class="modal-close-btn" onclick="closeModal('historyModal')">CLOSE</button>
+        </div>
+    </div>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script src="script.js"></script>
+</body>
+</html>

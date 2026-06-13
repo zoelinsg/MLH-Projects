@@ -1,0 +1,787 @@
+/* ========================================
+   MONA MAYHEM ARENA LAB - STYLE SHEET
+   Retro-Neon Cyberpunk Arcade Design
+   ======================================== */
+
+/* ========== GLOBAL STYLES ========== */
+/* Reset default browser styles and set base font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 100%);
+    color: #00F5FF;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ========== MAIN CONTAINER ========== */
+/* Main wrapper with glowing border and dark background */
+.container {
+    max-width: 1000px;
+    width: 100%;
+    background: rgba(15, 15, 35, 0.95);
+    border: 3px solid #FF00FF;
+    border-radius: 15px;
+    padding: 40px;
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.5), 
+                0 0 60px rgba(0, 245, 255, 0.3);
+}
+
+/* ========== HERO SECTION ========== */
+/* Title area with animated glowing effect */
+.hero {
+    text-align: center;
+    margin-bottom: 50px;
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.hero h1 {
+    font-size: 3em;
+    font-weight: bold;
+    color: #FF00FF;
+    text-shadow: 0 0 10px #FF00FF, 0 0 20px #00F5FF;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    color: #00F5FF;
+    text-shadow: 0 0 5px #00F5FF;
+    margin-bottom: 20px;
+}
+
+/* ========== GAME DESCRIPTION PANEL ========== */
+/* Purple-themed info card with subtle glow */
+.description-panel {
+    background: rgba(139, 92, 246, 0.15);
+    border: 2px solid #8B5CF6;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-shadow: inset 0 0 15px rgba(139, 92, 246, 0.2);
+}
+
+.description-panel h2 {
+    color: #8B5CF6;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px #8B5CF6;
+}
+
+.description-panel p {
+    color: #00F5FF;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+/* ========== PANELS GRID LAYOUT ========== */
+/* Two-column layout for battle status and player stats */
+.panels-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* ========== BATTLE STATUS PANEL ========== */
+/* Cyan-themed panel showing match details */
+.battle-status-panel {
+    background: rgba(0, 245, 255, 0.1);
+    border: 2px solid #00F5FF;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(0, 245, 255, 0.3);
+}
+
+.battle-status-panel h2 {
+    color: #00F5FF;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px #00F5FF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Individual status items with separator lines */
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 245, 255, 0.3);
+}
+
+.status-item label {
+    color: #8B5CF6;
+    font-weight: bold;
+}
+
+.status-item value {
+    color: #FF00FF;
+    font-weight: bold;
+    text-shadow: 0 0 5px #FF00FF;
+}
+
+/* Health bar for opponent */
+.health-bar {
+    width: 100%;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #00F5FF;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.health-bar-fill {
+    height: 100%;
+    width: 80%;
+    background: linear-gradient(90deg, #00F5FF, #FF00FF);
+    box-shadow: 0 0 10px #00F5FF;
+}
+
+/* ========== PLAYER STATS PANEL ========== */
+/* Magenta-themed panel showing player progress */
+.player-stats-panel {
+    background: rgba(255, 0, 255, 0.1);
+    border: 2px solid #FF00FF;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+}
+
+.player-stats-panel h2 {
+    color: #FF00FF;
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px #FF00FF;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Individual stat items */
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.stat-item label {
+    color: #00F5FF;
+    font-weight: bold;
+}
+
+.stat-item value {
+    color: #8B5CF6;
+    font-weight: bold;
+    text-shadow: 0 0 5px #8B5CF6;
+}
+
+/* ========== BUTTONS SECTION ========== */
+/* Three-column grid for action buttons */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+/* Base button styles */
+.btn {
+    padding: 15px 20px;
+    font-size: 1.1em;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    border: 2px solid;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px currentColor;
+}
+
+/* ========== CYAN START BUTTON ========== */
+.btn-start {
+    background: linear-gradient(135deg, #00F5FF, #00F5FF);
+    color: #0a0a0a;
+    border-color: #00F5FF;
+    box-shadow: 0 0 15px #00F5FF, inset 0 0 10px rgba(0, 245, 255, 0.3);
+}
+
+.btn-start:hover {
+    background: linear-gradient(135deg, #00F5FF, #8B5CF6);
+    box-shadow: 0 0 25px #00F5FF, 0 0 15px #8B5CF6, inset 0 0 15px rgba(0, 245, 255, 0.5);
+    transform: scale(1.05);
+}
+
+.btn-start:focus {
+    outline: none;
+    box-shadow: 0 0 30px #00F5FF, 0 0 20px #8B5CF6;
+}
+
+/* ========== MAGENTA GAME OVER BUTTON ========== */
+.btn-gameover {
+    background: linear-gradient(135deg, #FF00FF, #8B5CF6);
+    color: #0a0a0a;
+    border-color: #FF00FF;
+    box-shadow: 0 0 15px #FF00FF, inset 0 0 10px rgba(255, 0, 255, 0.3);
+}
+
+.btn-gameover:hover {
+    background: linear-gradient(135deg, #FF00FF, #FF00FF);
+    box-shadow: 0 0 25px #FF00FF, 0 0 15px #8B5CF6, inset 0 0 15px rgba(255, 0, 255, 0.5);
+    transform: scale(1.05);
+}
+
+.btn-gameover:focus {
+    outline: none;
+    box-shadow: 0 0 30px #FF00FF, 0 0 20px #8B5CF6;
+}
+
+/* ========== PURPLE HISTORY BUTTON ========== */
+.btn-history {
+    background: linear-gradient(135deg, #8B5CF6, #FF00FF);
+    color: #0a0a0a;
+    border-color: #8B5CF6;
+    box-shadow: 0 0 15px #8B5CF6, inset 0 0 10px rgba(139, 92, 246, 0.3);
+}
+
+.btn-history:hover {
+    background: linear-gradient(135deg, #8B5CF6, #00F5FF);
+    box-shadow: 0 0 25px #8B5CF6, 0 0 15px #00F5FF, inset 0 0 15px rgba(139, 92, 246, 0.5);
+    transform: scale(1.05);
+}
+
+.btn-history:focus {
+    outline: none;
+    box-shadow: 0 0 30px #8B5CF6, 0 0 20px #00F5FF;
+}
+
+/* ========== MODAL STYLES ========== */
+/* Full-screen overlay for modals */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal.active {
+    display: flex;
+}
+
+/* Modal content box */
+.modal-content {
+    background: rgba(15, 15, 35, 0.95);
+    border: 3px solid #FF00FF;
+    border-radius: 15px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 0 40px rgba(255, 0, 255, 0.5), 
+                0 0 80px rgba(0, 245, 255, 0.3);
+    animation: slide-in 0.3s ease;
+}
+
+.modal-content h2 {
+    color: #FF00FF;
+    font-size: 2em;
+    text-shadow: 0 0 10px #FF00FF;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-content p {
+    color: #00F5FF;
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+/* Close button for modals */
+.modal-close-btn {
+    background: linear-gradient(135deg, #00F5FF, #8B5CF6);
+    color: #0a0a0a;
+    border: 2px solid #00F5FF;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px #00F5FF;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.modal-close-btn:hover {
+    box-shadow: 0 0 25px #00F5FF, 0 0 15px #8B5CF6;
+    transform: scale(1.05);
+}
+
+/* ========== MATCH HISTORY LIST ========== */
+/* Styled list for match history items */
+.history-list {
+    list-style: none;
+}
+
+.history-list li {
+    background: rgba(0, 245, 255, 0.1);
+    border-left: 3px solid #00F5FF;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: #00F5FF;
+}
+
+.history-list li:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-left-color: #FF00FF;
+}
+
+/* ========== GAME OVER SCREEN ========== */
+/* Full-screen game over overlay */
+.game-over-screen {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 0, 51, 0.95) 100%);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 20px;
+    animation: fade-in 0.4s ease;
+}
+
+.game-over-screen.active {
+    display: flex;
+}
+
+/* Game Over Container */
+.game-over-container {
+    background: rgba(15, 15, 35, 0.98);
+    border: 4px solid #FF00FF;
+    border-radius: 20px;
+    padding: 50px 40px;
+    max-width: 700px;
+    width: 100%;
+    box-shadow: 0 0 50px rgba(255, 0, 255, 0.6),
+                0 0 100px rgba(0, 245, 255, 0.4),
+                inset 0 0 30px rgba(139, 92, 246, 0.2);
+    animation: bounce-in 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Game Over Header */
+.game-over-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.game-over-title {
+    font-size: 4em;
+    font-weight: bold;
+    color: #FF00FF;
+    text-shadow: 0 0 15px #FF00FF, 0 0 30px #00F5FF, 0 0 45px #8B5CF6;
+    margin-bottom: 15px;
+    letter-spacing: 3px;
+    animation: pulse-intense 1s ease-in-out infinite;
+}
+
+.game-over-divider {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00F5FF, #FF00FF, #8B5CF6, transparent);
+    margin: 20px 0;
+    border-radius: 2px;
+    box-shadow: 0 0 15px #00F5FF;
+}
+
+/* Game Over Content */
+.game-over-content {
+    margin-bottom: 40px;
+}
+
+/* Result Banner */
+.result-banner {
+    background: rgba(0, 245, 255, 0.15);
+    border: 2px solid #00F5FF;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: inset 0 0 20px rgba(0, 245, 255, 0.2);
+}
+
+.result-text {
+    font-size: 2em;
+    color: #00F5FF;
+    font-weight: bold;
+    text-shadow: 0 0 10px #00F5FF;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+.result-subtitle {
+    font-size: 1.3em;
+    color: #FF00FF;
+    text-shadow: 0 0 8px #FF00FF;
+    letter-spacing: 1px;
+}
+
+/* Score Display */
+.score-display {
+    background: linear-gradient(135deg, rgba(255, 0, 255, 0.1), rgba(0, 245, 255, 0.1));
+    border: 3px solid #8B5CF6;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+}
+
+.score-label {
+    color: #8B5CF6;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px #8B5CF6;
+}
+
+.score-value {
+    font-size: 3.5em;
+    color: #FF00FF;
+    font-weight: bold;
+    text-shadow: 0 0 20px #FF00FF, 0 0 40px #00F5FF;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.score-unit {
+    color: #00F5FF;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px #00F5FF;
+}
+
+/* Match Statistics Grid */
+.match-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.stat-box {
+    background: rgba(139, 92, 246, 0.15);
+    border: 2px solid #8B5CF6;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: inset 0 0 10px rgba(139, 92, 246, 0.2);
+}
+
+.stat-label {
+    display: block;
+    color: #00F5FF;
+    font-size: 0.9em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    display: block;
+    color: #FF00FF;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 0 0 10px #FF00FF;
+}
+
+/* Achievements Section */
+.achievements-section {
+    background: rgba(0, 245, 255, 0.1);
+    border: 2px solid #00F5FF;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: inset 0 0 15px rgba(0, 245, 255, 0.2);
+}
+
+.achievements-title {
+    color: #00F5FF;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    text-shadow: 0 0 5px #00F5FF;
+    letter-spacing: 1px;
+}
+
+.achievement-badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background: linear-gradient(135deg, #FF00FF, #8B5CF6);
+    color: #0a0a0a;
+    padding: 10px 15px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 0.9em;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Game Over Buttons */
+.game-over-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.game-over-btn {
+    padding: 18px 25px;
+    font-size: 1.1em;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    border: 2px solid;
+    border-radius: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px currentColor;
+}
+
+.btn-play-again {
+    background: linear-gradient(135deg, #00F5FF, #8B5CF6);
+    color: #0a0a0a;
+    border-color: #00F5FF;
+    box-shadow: 0 0 20px #00F5FF, inset 0 0 10px rgba(0, 245, 255, 0.3);
+}
+
+.btn-play-again:hover {
+    background: linear-gradient(135deg, #00F5FF, #00F5FF);
+    box-shadow: 0 0 30px #00F5FF, 0 0 20px #8B5CF6, inset 0 0 15px rgba(0, 245, 255, 0.5);
+    transform: scale(1.08) translateY(-3px);
+}
+
+.btn-play-again:focus {
+    outline: none;
+    box-shadow: 0 0 40px #00F5FF, 0 0 25px #8B5CF6;
+}
+
+.btn-back-arena {
+    background: linear-gradient(135deg, #FF00FF, #8B5CF6);
+    color: #0a0a0a;
+    border-color: #FF00FF;
+    box-shadow: 0 0 20px #FF00FF, inset 0 0 10px rgba(255, 0, 255, 0.3);
+}
+
+.btn-back-arena:hover {
+    background: linear-gradient(135deg, #FF00FF, #FF00FF);
+    box-shadow: 0 0 30px #FF00FF, 0 0 20px #8B5CF6, inset 0 0 15px rgba(255, 0, 255, 0.5);
+    transform: scale(1.08) translateY(-3px);
+}
+
+.btn-back-arena:focus {
+    outline: none;
+    box-shadow: 0 0 40px #FF00FF, 0 0 25px #8B5CF6;
+}
+
+/* ========== ANIMATIONS ========== */
+/* Pulsing glow effect for hero title */
+@keyframes pulse-glow {
+    0%, 100% {
+        text-shadow: 0 0 10px #FF00FF, 0 0 20px #00F5FF;
+    }
+    50% {
+        text-shadow: 0 0 15px #FF00FF, 0 0 30px #00F5FF, 0 0 40px #8B5CF6;
+    }
+}
+
+/* Slide-in animation for modals */
+@keyframes slide-in {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Fade-in animation for game over screen */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Bounce-in animation for game over container */
+@keyframes bounce-in {
+    0% {
+        transform: scale(0.3) translateY(-50px);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Intense pulsing glow for game over title */
+@keyframes pulse-intense {
+    0%, 100% {
+        text-shadow: 0 0 15px #FF00FF, 0 0 30px #00F5FF, 0 0 45px #8B5CF6;
+    }
+    50% {
+        text-shadow: 0 0 25px #FF00FF, 0 0 50px #00F5FF, 0 0 70px #8B5CF6;
+    }
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+/* Mobile screens (tablets and below) */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    /* Stack panels vertically on mobile */
+    .panels-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Stack buttons vertically on mobile */
+    .buttons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        padding: 25px;
+    }
+
+    /* Game Over Screen Mobile */
+    .game-over-container {
+        padding: 35px 25px;
+        border-radius: 15px;
+    }
+
+    .game-over-title {
+        font-size: 2.5em;
+    }
+
+    .score-value {
+        font-size: 2.5em;
+    }
+
+    .match-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .game-over-buttons {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 1.5em;
+        letter-spacing: 1px;
+    }
+
+    .battle-status-panel h2,
+    .player-stats-panel h2 {
+        font-size: 1.1em;
+    }
+
+    .btn {
+        padding: 12px 15px;
+        font-size: 0.9em;
+    }
+
+    /* Game Over Screen Small Mobile */
+    .game-over-screen {
+        padding: 10px;
+    }
+
+    .game-over-container {
+        padding: 25px 15px;
+    }
+
+    .game-over-title {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+    }
+
+    .game-over-divider {
+        margin: 10px 0;
+    }
+
+    .score-display {
+        padding: 20px;
+    }
+
+    .score-value {
+        font-size: 2em;
+    }
+
+    .achievement-badges {
+        gap: 5px;
+    }
+
+    .badge {
+        font-size: 0.8em;
+        padding: 8px 12px;
+    }
+
+    .game-over-btn {
+        padding: 15px 15px;
+        font-size: 0.95em;
+        letter-spacing: 0.5px;
+    }
+}
