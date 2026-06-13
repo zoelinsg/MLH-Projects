@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budget Buddy</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <h1>Budget Buddy</h1>
+      <p>A beginner-friendly tool to practice budgeting, saving, and smarter spending habits.</p>
+    </section>
+
+    <section class="card">
+      <h2>Monthly Budget Input</h2>
+
+      <label for="income">Monthly Income</label>
+      <input type="number" id="income" placeholder="Enter your monthly income" />
+
+      <div class="expense-grid">
+        <div>
+          <label for="housing">Housing</label>
+          <input type="number" id="housing" placeholder="Rent / utilities" />
+        </div>
+
+        <div>
+          <label for="food">Food</label>
+          <input type="number" id="food" placeholder="Groceries / meals" />
+        </div>
+
+        <div>
+          <label for="transportation">Transportation</label>
+          <input type="number" id="transportation" placeholder="Bus / gas / travel" />
+        </div>
+
+        <div>
+          <label for="entertainment">Entertainment</label>
+          <input type="number" id="entertainment" placeholder="Fun / hobbies" />
+        </div>
+      </div>
+
+      <button id="calculateBtn">Calculate Budget</button>
+    </section>
+
+    <section class="card">
+      <h2>Budget Summary</h2>
+      <div class="summary-grid">
+        <div class="summary-box">
+          <h3>Total Expenses</h3>
+          <p id="totalExpenses">$0</p>
+        </div>
+        <div class="summary-box">
+          <h3>Remaining Balance</h3>
+          <p id="remainingBalance">$0</p>
+        </div>
+        <div class="summary-box">
+          <h3>Savings Rate</h3>
+          <p id="savingsRate">0%</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Financial Tip</h2>
+      <p id="financialTip">Enter your budget details to get a personalized tip.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
