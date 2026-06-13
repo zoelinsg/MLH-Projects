@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Community Event Calendar for Nonprofits</title>
+    <!-- Link to the stylesheet (same folder) -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header / Hero: shows title, subtitle, and primary action -->
+    <header class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Community Event Calendar for Nonprofits</h1>
+          <p class="subtitle">Simple, volunteer-friendly calendar to share upcoming events and opportunities.</p>
+        </div>
+        <!-- Button opens the Add Event form (handled by script.js) -->
+        <div class="hero-actions">
+          <button id="open-add-event" class="btn primary">Add Event</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Controls: search + category filters -->
+        <section class="controls" aria-label="Event controls">
+          <!-- NOTE for beginners: the search input filters visible events as you type.
+               The category buttons limit results by event type. Both are handled in script.js. -->
+        <!-- Search: filters events by keyword -->
+        <div class="search">
+          <label for="searchInput" class="visually-hidden">Search events</label>
+          <input id="searchInput" type="search" placeholder="Search events by title, location, or description" />
+        </div>
+
+        <!-- Category filters: buttons toggle categories -->
+        <nav id="categoryFilters" class="categories" aria-label="Event categories">
+          <!-- Each category button has aria-pressed for accessibility; JS will update active state -->
+          <button class="cat-btn" data-category="All" aria-pressed="true">All</button>
+          <button class="cat-btn" data-category="Volunteer" aria-pressed="false">Volunteer</button>
+          <button class="cat-btn" data-category="Fundraiser" aria-pressed="false">Fundraiser</button>
+          <button class="cat-btn" data-category="Workshop" aria-pressed="false">Workshop</button>
+          <button class="cat-btn" data-category="Community" aria-pressed="false">Community</button>
+          <button class="cat-btn" data-category="Education" aria-pressed="false">Education</button>
+        </nav>
+      </section>
+
+      <!-- Event list: script.js will render cards inside this section -->
+      <section id="eventsContainer" class="events-grid" aria-live="polite" role="list">
+        <!-- Each event card inserted here will have role="listitem" for assistive tech. -->
+        <!-- Event cards are inserted here by JavaScript -->
+      </section>
+    </main>
+
+    <!-- Add Event Form Modal (hidden by default) -->
+    <div id="addEventModal" class="modal" aria-hidden="true">
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="addEventTitle">
+        <header class="modal-header">
+          <h2 id="addEventTitle">Add Event</h2>
+          <button id="closeAddEvent" class="modal-close" aria-label="Close add event form">✕</button>
+        </header>
+
+        <!-- Beginner-friendly form with labelled fields -->
+        <form id="addEventForm">
+          <div class="form-row">
+            <label for="evTitle">Title <span class="required">*</span></label>
+            <input id="evTitle" name="title" type="text" required />
+          </div>
+          <div class="form-row form-grid">
+            <div>
+              <label for="evDate">Date <span class="required">*</span></label>
+              <input id="evDate" name="date" type="date" required />
+            </div>
+            <div>
+              <label for="evTime">Time</label>
+              <input id="evTime" name="time" type="time" />
+            </div>
+          </div>
+          <div class="form-row">
+            <label for="evCategory">Category</label>
+            <select id="evCategory" name="category">
+              <option>Volunteer</option>
+              <option>Fundraiser</option>
+              <option>Workshop</option>
+              <option>Community</option>
+              <option>Education</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="evLocation">Location</label>
+            <input id="evLocation" name="location" type="text" />
+          </div>
+          <div class="form-row">
+            <label for="evDescription">Description</label>
+            <textarea id="evDescription" name="description" rows="4"></textarea>
+          </div>
+            <!-- Simplified fields for MVP: Title, Date, Time, Category, Location, Description -->
+            <footer class="form-actions">
+              <button type="submit" class="btn primary">Add event</button>
+              <button type="button" id="cancelAdd" class="btn">Cancel</button>
+            </footer>
+        </form>
+      </div>
+    </div>
+
+    <!-- Event Details Modal: shows expanded details for a selected event -->
+    <div id="detailsModal" class="modal" aria-hidden="true">
+      <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="detailsTitle">
+        <header class="modal-header">
+          <h2 id="detailsTitle">Event details</h2>
+          <button id="closeDetails" class="modal-close" aria-label="Close details">✕</button>
+        </header>
+        <div id="detailsContent" class="details-content">
+          <!-- Filled dynamically by script.js -->
+          <p class="muted">Select an event to see details here.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer: supportive nonprofit message -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>Support your local nonprofits — volunteer, donate, and share events.</p>
+      </div>
+    </footer>
+
+    <!-- Link to the JavaScript (same folder). Script will attach behaviors to the above elements. -->
+    <script src="script.js" defer></script>
+  </body>
+</html>
