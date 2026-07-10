@@ -1,0 +1,137 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background:
+    radial-gradient(circle at top left, #dbeafe 0, transparent 32%),
+    linear-gradient(135deg, #f8fafc 0%, #eef2ff 48%, #f5f3ff 100%);
+  color: #1e293b;
+}
+
+.app {
+  width: min(920px, 92%);
+  margin: 0 auto;
+  padding: 56px 0;
+}
+
+.hero {
+  margin-bottom: 28px;
+}
+
+h1 {
+  font-size: 52px;
+  margin: 0 0 14px;
+  color: #312e81;
+  letter-spacing: -1px;
+}
+
+.hero p {
+  max-width: 720px;
+  line-height: 1.7;
+  color: #475569;
+  font-size: 18px;
+}
+
+.card,
+.note {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #dbeafe;
+  border-radius: 24px;
+  padding: 32px;
+  margin-top: 24px;
+  box-shadow: 0 24px 60px rgba(79, 70, 229, 0.14);
+}
+
+.card h2,
+.note h2 {
+  color: #1e1b4b;
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  margin-top: 18px;
+  margin-bottom: 8px;
+  color: #334155;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  padding: 15px 16px;
+  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 16px;
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.18);
+}
+
+button {
+  width: 100%;
+  margin-top: 26px;
+  padding: 15px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(79, 70, 229, 0.25);
+}
+
+.result {
+  margin-top: 24px;
+  padding: 22px;
+  border-radius: 18px;
+  background: #ecfeff;
+  border: 1px solid #67e8f9;
+}
+
+.result h3 {
+  margin-top: 0;
+  color: #155e75;
+}
+
+.result p {
+  margin: 8px 0;
+  color: #334155;
+}
+
+.amount {
+  font-size: 38px;
+  font-weight: 900;
+  color: #4f46e5;
+}
+
+.error {
+  color: #dc2626;
+  font-weight: 700;
+}
+
+.hidden {
+  display: none;
+}
+
+.note p {
+  line-height: 1.7;
+  color: #475569;
+}

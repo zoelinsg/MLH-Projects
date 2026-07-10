@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Friend Budget Helper</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <h1>Friend Budget Helper</h1>
+      <p>
+        A simple split-bill calculator built for friends who want to quickly
+        divide meal, cafe, or hangout costs.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Split the Bill</h2>
+
+      <label for="totalAmount">Total Amount</label>
+      <input id="totalAmount" type="number" min="0" placeholder="Example: 1200" />
+
+      <label for="peopleCount">Number of People</label>
+      <input id="peopleCount" type="number" min="1" placeholder="Example: 4" />
+
+      <label for="serviceFee">Service Fee (%)</label>
+      <input id="serviceFee" type="number" min="0" placeholder="Example: 10" />
+
+      <label for="discount">Discount Amount</label>
+      <input id="discount" type="number" min="0" placeholder="Example: 100" />
+
+      <button id="calculateButton">Calculate</button>
+
+      <div id="result" class="result hidden"></div>
+      <p id="errorMessage" class="error"></p>
+    </section>
+
+    <section class="note">
+      <h2>Why I Built This</h2>
+      <p>
+        I built this for a friend who often goes out with classmates and needs
+        a fast way to split shared expenses without doing manual calculations.
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
