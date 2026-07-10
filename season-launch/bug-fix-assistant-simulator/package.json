@@ -1,0 +1,18 @@
+{
+  "name": "bug-fix-assistant-simulator",
+  "version": "1.0.0",
+  "description": "A simple command line debugging game built with GitHub Copilot for MLH Global Hack Week.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "mlh",
+    "github-copilot",
+    "debugging",
+    "javascript",
+    "cli-game"
+  ],
+  "author": "Zoe Lin",
+  "license": "MIT"
+}
