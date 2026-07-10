@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docker Debug Helper</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <p class="badge">MLH Season Launch · Docker Project</p>
+      <h1>Docker Debug Helper</h1>
+      <p>
+        A small Dockerized web app that helps beginners understand common programming bugs
+        and debugging actions.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2 id="bug-title">Loading bug scenario...</h2>
+
+      <div class="block">
+        <h3>Error Message</h3>
+        <pre id="bug-error"></pre>
+      </div>
+
+      <div class="block">
+        <h3>Likely Cause</h3>
+        <p id="bug-cause"></p>
+      </div>
+
+      <div class="block">
+        <h3>Suggested Fix</h3>
+        <p id="bug-fix"></p>
+      </div>
+
+      <button id="next-button">Next Bug</button>
+    </section>
+
+    <section class="docker-note">
+      <h2>Why Docker?</h2>
+      <p>
+        This project uses Docker to package the app and run it consistently across environments.
+        Instead of depending on local machine setup, the app can run inside a container.
+      </p>
+      <code>docker build -t docker-debug-helper .</code>
+      <code>docker run -p 3000:3000 docker-debug-helper</code>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

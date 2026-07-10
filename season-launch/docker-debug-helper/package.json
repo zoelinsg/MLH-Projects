@@ -1,0 +1,22 @@
+{
+  "name": "docker-debug-helper",
+  "version": "1.0.0",
+  "description": "A Dockerized web app that helps beginners learn common debugging patterns.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "mlh",
+    "docker",
+    "nodejs",
+    "express",
+    "debugging",
+    "season-launch"
+  ],
+  "author": "Zoe Lin",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.3"
+  }
+}
