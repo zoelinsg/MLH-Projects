@@ -141,3 +141,19 @@ h1 {
   font-size: 1.375rem;
   color: #2b6cb0;
 }
+
+.result-row.split {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.result-row.split span:last-child.hint {
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-style: italic;
+  color: #718096;
+  text-align: right;
+  max-width: 60%;
+  line-height: 1.4;
+}

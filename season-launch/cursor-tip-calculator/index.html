@@ -10,7 +10,7 @@
   <main class="calculator">
     <header>
       <h1>Tip Calculator</h1>
-      <p class="subtitle">Enter your bill and choose a tip percentage.</p>
+      <p class="subtitle">Enter your bill, choose a tip, and split between people.</p>
     </header>
 
     <form id="tip-form" class="form">
@@ -43,6 +43,16 @@
           step="1"
         >
       </fieldset>
+
+      <label for="num-people" class="label">Number of people</label>
+      <input
+        type="number"
+        id="num-people"
+        class="input"
+        placeholder="How many people?"
+        min="1"
+        step="1"
+      >
     </form>
 
     <section class="results" aria-live="polite">
@@ -53,6 +63,10 @@
       <div class="result-row total">
         <span>Total amount</span>
         <span id="total-amount">$0.00</span>
+      </div>
+      <div class="result-row split">
+        <span>Each person pays</span>
+        <span id="per-person-amount">Enter the number of people to split the bill</span>
       </div>
     </section>
   </main>
