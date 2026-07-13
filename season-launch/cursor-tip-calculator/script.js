@@ -20,8 +20,25 @@ function getTipPercent() {
   return selectedTipPercent;
 }
 
+function getPeopleCount() {
+  const peopleValue = peopleInput.value.trim();
+
+  if (peopleValue === "") {
+    return null;
+  }
+
+  const people = Number(peopleValue);
+
+  if (!Number.isInteger(people) || people < 1) {
+    return null;
+  }
+
+  return people;
+}
+
 function updateSplitBill(totalAmount) {
   const peopleValue = peopleInput.value.trim();
+  const people = getPeopleCount();
 
   if (peopleValue === "") {
     perPersonDisplay.textContent = "Enter the number of people to split the bill";
@@ -29,9 +46,7 @@ function updateSplitBill(totalAmount) {
     return;
   }
 
-  const people = parseInt(peopleValue, 10);
-
-  if (isNaN(people) || people < 1) {
+  if (people === null) {
     perPersonDisplay.textContent = "Enter at least 1 person";
     perPersonDisplay.classList.add("hint");
     return;
@@ -74,6 +89,7 @@ tipButtons.forEach(function (button) {
 
 billInput.addEventListener("input", calculateTip);
 peopleInput.addEventListener("input", calculateTip);
+peopleInput.addEventListener("change", calculateTip);
 customTipInput.addEventListener("input", function () {
   if (customTipInput.value.trim() !== "") {
     tipButtons.forEach(function (btn) {
